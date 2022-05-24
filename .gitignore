@@ -1,3 +1,5 @@
 images/*
 .ipynb_checkpoints/*
 .vscode/*
+logs/*
+models/*
