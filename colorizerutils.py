@@ -27,9 +27,9 @@ def rgb_to_lab_split_channels(image_set):
         lab_image = cv2.cvtColor(image,cv2.COLOR_RGB2LAB)
         l_channel, a_channel, b_channel = cv2.split(lab_image)
 
-        l_channel = l_channel/255
-        a_channel = (a_channel-128)/255
-        b_channel = (b_channel-128)/255
+        l_channel = np.add(l_channel,-128)/128
+        a_channel = np.add(a_channel,-128)/128
+        b_channel = np.add(b_channel,-128)/128
         ab_channels = np.dstack((a_channel,b_channel))
 
         l_array.append(np.expand_dims(l_channel,axis=2))
@@ -38,9 +38,9 @@ def rgb_to_lab_split_channels(image_set):
     return np.array(l_array), np.array(ab_array)
 
 def lab_to_rgb_combine_channels(gray_array,color_array):
-    l_channel = gray_array * 255
-    a_channel = (color_array[:,:,0]*255)+128
-    b_channel = (color_array[:,:,1]*255)+128
+    l_channel = np.add(gray_array*128,128)
+    a_channel = np.add(color_array[:,:,0]*128,128)
+    b_channel = np.add(color_array[:,:,1]*128,128)
 
     recombined = np.dstack((l_channel,a_channel,b_channel))
     converted = cv2.cvtColor(recombined.astype(np.uint8),cv2.COLOR_LAB2RGB)
