@@ -5,8 +5,6 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras import initializers
 
 class image_loader(keras.utils.Sequence):
 
@@ -77,21 +75,38 @@ def lab_to_rgb_combine_channels(l_channel,ab_channels):
 
     return converted
 
-def display_images(generator,gray_channel,color_channels):
+def display_images(gray_channel,color_channels,generator1,gen1_title,generator2=None,gen2_title=None):
 
-    generator_predictions = generator(gray_channel,training=False)
+    generator1_predictions = generator1(gray_channel,training=False)
 
-    figure, axes = plt.subplots(8,3,figsize=(10, 32))
+    if generator2 is None:
+
+        figure, axes = plt.subplots(8,3,figsize=(10, 32))
+
+    else:
+
+        generator2_predictions = generator2(gray_channel,training=False)
+        figure,axes = plt.subplots(8,4,figsize=(14,32))
 
     for index,row in enumerate(axes):
         row[0].imshow(gray_channel[index],cmap='gray')
         row[0].set_title('Gray Input',fontsize=20)
 
-        row[1].imshow(lab_to_rgb_combine_channels(gray_channel[index],generator_predictions[index]))
-        row[1].set_title('Colorized',fontsize=20)
+        row[1].imshow(lab_to_rgb_combine_channels(gray_channel[index],generator1_predictions[index]))
+        row[1].set_title(gen1_title,fontsize=20)
 
-        row[2].imshow(lab_to_rgb_combine_channels(gray_channel[index],color_channels[index]))
-        row[2].set_title('Ground Truth',fontsize=20)
+        if generator2 is None:
+
+            row[2].imshow(lab_to_rgb_combine_channels(gray_channel[index],color_channels[index]))
+            row[2].set_title('Ground Truth',fontsize=20)
+
+        else:
+
+            row[2].imshow(lab_to_rgb_combine_channels(gray_channel[index],generator2_predictions[index]))
+            row[2].set_title(gen2_title,fontsize=20)
+
+            row[3].imshow(lab_to_rgb_combine_channels(gray_channel[index],color_channels[index]))
+            row[3].set_title('Ground Truth',fontsize=20)
 
         for axis in row:
             axis.set_xticks([])
@@ -100,26 +115,3 @@ def display_images(generator,gray_channel,color_channels):
         figure.subplots_adjust(wspace=0.02, hspace=0)
 
     return(figure)
-
-def downsampling(filters,stride,prev_layer):
-
-    init = initializers.RandomNormal()
-
-    block = layers.Conv2D(filters,strides=stride,kernel_size=4,padding='same',kernel_initializer=init,use_bias=False)(prev_layer)
-    block = layers.BatchNormalization()(block)
-    block = layers.LeakyReLU(0.2)(block)
-
-    return block
-
-def upsampling(filters,stride,prev_layer,skip_layer):
-
-    init = initializers.RandomNormal()
-
-    block = layers.Conv2DTranspose(
-        filters,strides=stride,kernel_size=4,padding='same',kernel_initializer=init,use_bias=False)(prev_layer)
-    block = layers.BatchNormalization()(block)
-    block = layers.Concatenate()([block,skip_layer])
-    block = layers.LeakyReLU(0.2)(block)
-    block = layers.Dropout(0.3)(block)
-
-    return block
