@@ -41,7 +41,7 @@ class image_loader(keras.utils.Sequence):
 
 def load_and_resize(image_filepath,transform):
 
-    image = cv2.imread(image_filepath)
+    image = cv2.cvtColor(cv2.imread(image_filepath),cv2.COLOR_BGR2RGB)
     image = cv2.resize(image,(64,64))
 
     # Apply random rotations and flips to images for training
