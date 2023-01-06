@@ -11,9 +11,12 @@ class image_loader(keras.utils.Sequence):
 
     # Default directory to load image is outside repository
     # training value determines whether to apply random rotations to images
-    def __init__(self,directory='../images/train_images/',batch_size=256,training=True):
+    def __init__(self,directory='../images/train_images/',batch_size=256,training=True,sort_files=False):
 
-        self.file_paths = [directory + file_name for file_name in os.listdir(directory)]
+        if sort_files:
+            self.file_paths = [directory + file_name for file_name in sorted(os.listdir(directory))]
+        else:
+            self.file_paths = [directory + file_name for file_name in os.listdir(directory)]
         self.batch_size = batch_size
         self.training = training
 
