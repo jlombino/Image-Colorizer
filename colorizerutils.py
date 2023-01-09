@@ -2,7 +2,6 @@ import os
 import cv2
 import math
 import random
-import imageio
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
@@ -142,49 +141,3 @@ def display_images(gray_channel,color_channels,generator1,gen1_title,generator2=
         figure.subplots_adjust(wspace=0.02, hspace=0)
 
     return(figure)
-
-def make_gifs(image_folder,batch_size,batch_number,generator,save_folder):
-
-    # Empty lists for the frames for 3 gifs
-    grayscale_frames = []
-    colorized_frames = []
-    original_frames = []
-
-    # Load the batch of sorted images starting at frame batch size * batch number
-    image_batch = image_loader(directory=image_folder,
-    batch_size=batch_size,training=False,sort_files=True).__getitem__(batch_number)
-
-    # Generate colored frames using generator
-    generator_output = generator(image_batch[0],training=False)
-
-    for frame_number in range(batch_size):
-
-        # Fill a and b channels in the grayscale image with zeros
-        grayscale_dummy_color = np.dstack([np.zeros_like(image_batch[0][frame_number]),
-            np.zeros_like(image_batch[0][frame_number])])
-
-        # Need to recombine channels and convert back to rgb
-        # Add each grayscale frame to grayscale list
-        grayscale_frames.append(lab_to_rgb_combine_channels(l_channel=image_batch[0][frame_number],
-            ab_channels=grayscale_dummy_color))
-
-        # Add each colorized frame made using generator to colorized list
-        colorized_frames.append(lab_to_rgb_combine_channels(l_channel=image_batch[0][frame_number],
-            ab_channels=generator_output[frame_number]))
-
-        # Add each original frame to original list without modifying
-        original_frames.append(lab_to_rgb_combine_channels(l_channel=image_batch[0][frame_number],
-            ab_channels=image_batch[1][frame_number]))
-
-    # Create gifs from each list and save to save folder prefixed with batch number
-    with imageio.get_writer(save_folder + f'{batch_number}_grayscale.gif',mode='I') as writer:
-        for frame in grayscale_frames:
-            writer.append_data(frame)
-
-    with imageio.get_writer(save_folder + f'{batch_number}_colorized.gif',mode='I') as writer:
-        for frame in colorized_frames:
-            writer.append_data(frame)
-
-    with imageio.get_writer(save_folder + f'{batch_number}_original.gif',mode='I') as writer:
-        for frame in original_frames:
-            writer.append_data(frame)
