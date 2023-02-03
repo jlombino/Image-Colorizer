@@ -216,7 +216,7 @@ In this case, there are not many defects in the generator colorized images. The 
 <h3>Video Data</h3>
 
 <p>
-As mentioned previously, the video colorization model was trained using the <a href=https://dareful.com/videos/nature/>Dareful Nature Collection</a>
+As mentioned previously, the video colorization model was trained using the <a href=https://dareful.com/videos/nature/>Dareful Nature Collection</a>.
 </p>
 
 <img src=resources/train_frames.png width=500>
@@ -258,9 +258,9 @@ Here, results are shown for the video colorizing model. The leftmost video is th
         <th>Colorized Video</th>
         <th>Original Video</th>
     <tr>
-        <td><img src=resources/video/test_5_grayscale.gif width=256></img></td>
-        <td><img src=resources/video/test_5_colorized.gif width=256></img></td>
-        <td><img src=resources/video/test_5_original.gif width=256></img></td>
+        <td><img src=resources/video/test_5_grayscale.gif width=128></img></td>
+        <td><img src=resources/video/test_5_colorized.gif width=128></img></td>
+        <td><img src=resources/video/test_5_original.gif width=128></img></td>
     </tr>
     <tr>
         <th>Grayscale Video</th>
@@ -268,9 +268,9 @@ Here, results are shown for the video colorizing model. The leftmost video is th
         <th>Original Video</th>
     <tr>
     <tr>
-        <td><img src=resources/video/test_10_grayscale.gif width=256></img></td>
-        <td><img src=resources/video/test_10_colorized.gif width=256></img></td>
-        <td><img src=resources/video/test_10_original.gif width=256></img></td>
+        <td><img src=resources/video/test_10_grayscale.gif width=128></img></td>
+        <td><img src=resources/video/test_10_colorized.gif width=128></img></td>
+        <td><img src=resources/video/test_10_original.gif width=128></img></td>
     </tr>
     <tr>
         <th>Grayscale Video</th>
@@ -278,9 +278,9 @@ Here, results are shown for the video colorizing model. The leftmost video is th
         <th>Original Video</th>
     <tr>
     <tr>
-        <td><img src=resources/video/test_20_grayscale.gif width=256></img></td>
-        <td><img src=resources/video/test_20_colorized.gif width=256></img></td>
-        <td><img src=resources/video/test_20_original.gif width=256></img></td>
+        <td><img src=resources/video/test_20_grayscale.gif width=128></img></td>
+        <td><img src=resources/video/test_20_colorized.gif width=128></img></td>
+        <td><img src=resources/video/test_20_original.gif width=128></img></td>
     </tr>
     <tr>
         <th>Grayscale Video</th>
@@ -288,9 +288,9 @@ Here, results are shown for the video colorizing model. The leftmost video is th
         <th>Original Video</th>
     <tr>
     <tr>
-        <td><img src=resources/video/test_25_grayscale.gif width=256></img></td>
-        <td><img src=resources/video/test_25_colorized.gif width=256></img></td>
-        <td><img src=resources/video/test_25_original.gif width=256></img></td>
+        <td><img src=resources/video/test_25_grayscale.gif width=128></img></td>
+        <td><img src=resources/video/test_25_colorized.gif width=128></img></td>
+        <td><img src=resources/video/test_25_original.gif width=128></img></td>
     </tr>
 </table>
 
