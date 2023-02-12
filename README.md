@@ -14,6 +14,8 @@ This project features a hypothetical business case and is for educational purpos
 
 ```
 ├── resources                        <- Images and videos used in notebooks
+├── environment                      <- Information for reproducibility
+├── Slides.pdf                       <- Presentation for this project
 ├── Colorizer_Analysis.ipynb         <- Final notebook summarizing all work
 ├── Video_Colorizer.ipynb            <- Notebook for model trained on video data
 ├── GAN_Colorizer.ipynb              <- Notebook for model trained using adversarial loss
@@ -49,26 +51,6 @@ These algorithms allow for objects to be tracked between video frames. If one fr
 
 <p>
 Despite the many challenges, BentoColor plans to utilize neural networks to automatically colorize images and video frames. Specifically, BentoColor plans to utilize a U-Net similar to the ones described in [<a href=https://arxiv.org/pdf/1505.04597.pdf>U-Net: Convolutional Networks for Biomedical Image Segmentation</a>] and [<a href=https://www.tensorflow.org/tutorials/generative/pix2pix>pix2pix: Image-to-image translation with a conditional GAN</a>] to accomplish this goal.
-</p>
-
-<h1>Recommendations</h1>
-
-<h3>Partnerships for Data Acquisition</h3>
-
-<p>
-First, BentoColor should make partnerships with image and movie rightshholders to acquire more video data. BentoColor should subsidize colorization services in exchange for the right to train future models on shows and movies owned by these partners. This will help BentoColor acquire new customers and form relationships with them. In addition, it will provide the necessary data to be used when training the next generation of models.
-</p>
-
-<h3>Model Upgrades</h3>
-
-<p>
-When creating the next generation of models, BentoColor should consider incorporating a classifier into the generator. An example of this architecture is shown in [<a href=https://arxiv.org/pdf/1712.03400.pdf>Deep Koalarization: Image Colorization using CNNs and Inception-ResNet-v2</a>]. Currently, the model can not determine whether it is coloring a shirt or a hat, and is only selecting colors for the image based on patterns of pixels. Adding a classifier to the model would provide it with context and likely improve colorization. This could not be incorporated into current models because pre-trained classifiers require a larger image resolution than BentoColors' current hardware can process in a reasonable amount of time.
-</p>
-
-<h3>Current Benefits</h3>
-
-<p>
-Finally, while the colorization model needs more work before it can automatically colorize videos, it can be deployed alongside current technology. It can colorize individual frames reasonably well which can provide a useful starting point for technicians. It is likely that fully automatic video colorization will be possible in the near future, but even the limited version available today can be a useful tool in the hands of talented technicians.
 </p>
 
 <h1>Data</h1>
@@ -211,6 +193,14 @@ There are several important questions to ask when determining how well a given m
 In this case, there are not many defects in the generator colorized images. The GAN produces more vibrant and detailed images while the generator trained using only MSE tends to use fewer colors overall. The GAN is also noticably better at capturing and accentuating the details in the images while the generator trained using MSE tends to apply colors across object boundaries more often. The GAN deviates more from the colors in the original image, but it often uses colors that could also be appropriate for the objects in the scene.
 </p>
 
+<h3>Survey</h3>
+
+<p>
+Because colorization is subjective, a survey is the best way to determine which model performed best. In this survey, ten participants were shown sixteen rows of images with the grayscale images and labels removed. The order of the images in each row was shuffled. The participants were asked to select the image in each row that had the most realistic colors. The results of this survey are shown in the chart below. While the original images were the clear winner, it was extremely surprising to find that participants preferred a model's colorization to the original color images 40 percent of the time. The adversarial model in particular had an excellent showing being selected as the most realistic colorization nearly one third of the time.
+</p>
+
+<img src="resources/survey-pie.png" width=500>
+
 <h1>Video Colorization</h1>
 
 <h3>Video Data</h3>
@@ -323,6 +313,32 @@ As well as some new questions:
 
 <p>
 While the colors in the videos are pretty consistent, they are definitely not as vibrant as the original video's colors. The model appears to be tracking large objects such as the sky and trees reasonably well, but has problems finding the smaller objects in each frame. There are no major defects such as random lines or patches, but the colorized videos still do not match the original videos well. This is likely the result of the lower quality of the training dataset with its nearly duplicate frames and smaller size. Using more short videos to allow the model to experience a wider variety of scenes would likely have produced a substantially better model.
+</p>
+
+<h3>Survey</h3>
+
+<p>
+As with the image colorization model, because colorization is subjective, a survey is the best method to determine whether the video colorization model performed well. Ten participants were shown the two color videos from each of the above rows and asked to select the video with the more realistic colors. The labels were removed and the order of the videos was randomized for each row. The results were less promising than the results for the image colorization model. Participants selected the original video as the one with more realistic colors 82.5 percent of the time. This survey shows that there is still much work to be done on the video colorization model.
+</p>
+
+<h1>Recommendations</h1>
+
+<h3>Partnerships for Data Acquisition</h3>
+
+<p>
+First, BentoColor should make partnerships with image and movie rightshholders to acquire more video data. BentoColor should subsidize colorization services in exchange for the right to train future models on shows and movies owned by these partners. This will help BentoColor acquire new customers and form relationships with them. In addition, it will provide the necessary data to be used when training the next generation of models.
+</p>
+
+<h3>Model Upgrades</h3>
+
+<p>
+BentoColor should continue developing both the image and video colorization models. The image colorization model can potentially be improved by adding a classifier as described in [<a href=https://arxiv.org/pdf/1712.03400.pdf>Deep Koalarization: Image Colorization using CNNs and Inception-ResNet-v2</a>]. This will provide context to the model so it has a better idea of what it is coloring. The video model can potentially be improved by using the previous frame as an input when colorizing each frame. This should help promote consistency between frames and lead to a less choppy video overall.
+</p>
+
+<h3>Current Benefits</h3>
+
+<p>
+Finally, BentoColor should provide technicians with the current video colorization model. While it is not perfect, it can colorize individual frames reasonably well. This can provide a starting point for technicians who will only need to touch up the model's output rather than manually colorize entire frames. This will help address many of the inefficiencies in the current colorization process.
 </p>
 
 <h1>Conclusion</h1>
