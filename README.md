@@ -199,7 +199,7 @@ In this case, there are not many defects in the generator colorized images. The 
 Because colorization is subjective, a survey is the best way to determine which model performed best. In this survey, ten participants were shown sixteen rows of images with the grayscale images and labels removed. The order of the images in each row was shuffled. The participants were asked to select the image in each row that had the most realistic colors. The results of this survey are shown in the chart below. While the original images were the clear winner, it was extremely surprising to find that participants preferred a model's colorization to the original color images 40 percent of the time. The adversarial model in particular had an excellent showing being selected as the most realistic colorization nearly one third of the time.
 </p>
 
-<img src="resources/survey-pie.png" width=500>
+<img src="resources/survey-pie.png" width=500 style="background-color:white;">
 
 <h1>Video Colorization</h1>
 
