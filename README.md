@@ -196,7 +196,7 @@ In this case, there are not many defects in the generator colorized images. The 
 <h3>Survey</h3>
 
 <p>
-Because colorization is subjective, a survey is the best way to determine which model performed best. In this survey, ten participants were shown sixteen rows of images with the grayscale images and labels removed. The order of the images in each row was shuffled. The participants were asked to select the image in each row that had the most realistic colors. The results of this survey are shown in the chart below. While the original images were the clear winner, it was extremely surprising to find that participants preferred a model's colorization to the original color images 40 percent of the time. The adversarial model in particular had an excellent showing being selected as the most realistic colorization nearly one third of the time.
+Because colorization is subjective, a survey is the best way to determine which model performed best. In this survey, ten participants were shown sixteen rows of images with the grayscale images and labels removed. The order of the images in each row was shuffled. The participants were asked to select the image in each row that had the best colors. The results of this survey are shown in the chart below. While the original images were the clear winner, it was extremely surprising to find that participants preferred a model's colorization to the original color images 40 percent of the time. The adversarial model in particular had an excellent showing being selected as the best colorization nearly one third of the time.
 </p>
 
 <img src="resources/survey-pie.png" width=500 style="background-color:white;">
@@ -318,7 +318,7 @@ While the colors in the videos are pretty consistent, they are definitely not as
 <h3>Survey</h3>
 
 <p>
-As with the image colorization model, because colorization is subjective, a survey is the best method to determine whether the video colorization model performed well. Ten participants were shown the two color videos from each of the above rows and asked to select the video with the more realistic colors. The labels were removed and the order of the videos was randomized for each row. The results were less promising than the results for the image colorization model. Participants selected the original video as the one with more realistic colors 82.5 percent of the time. This survey shows that there is still much work to be done on the video colorization model.
+As with the image colorization model, because colorization is subjective, a survey is the best method to determine whether the video colorization model performed well. Ten participants were shown the two color videos from each of the above rows and asked to select the video with the best colors. The labels were removed and the order of the videos was randomized for each row. The results were less promising than the results for the image colorization model. Participants selected the original video as the one with the best colors 82.5 percent of the time. This survey shows that there is still much work to be done on the video colorization model.
 </p>
 
 <h1>Recommendations</h1>
