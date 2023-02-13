@@ -326,7 +326,7 @@ As with the image colorization model, because colorization is subjective, a surv
 <h3>Partnerships for Data Acquisition</h3>
 
 <p>
-First, BentoColor should make partnerships with image and movie rightshholders to acquire more video data. BentoColor should subsidize colorization services in exchange for the right to train future models on shows and movies owned by these partners. This will help BentoColor acquire new customers and form relationships with them. In addition, it will provide the necessary data to be used when training the next generation of models.
+First, BentoColor should make partnerships with show and movie rightshholders to acquire more video data. BentoColor should subsidize colorization services in exchange for the right to train future models on shows and movies owned by these partners. This will help BentoColor acquire new customers and form relationships with them. In addition, it will provide the necessary data to be used when training the next generation of models.
 </p>
 
 <h3>Model Upgrades</h3>
